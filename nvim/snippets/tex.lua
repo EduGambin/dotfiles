@@ -12,7 +12,8 @@ end
 -------------------------------------------------------------------------------
 
 local math_mode = function()
-	return vim.fn['vimtex#syntax#in_mathzone']() == 1
+	--return vim.fn['vimtex#syntax#in_mathzone']() == 1
+	return false
 end
 
 local text_mode = function()
@@ -159,8 +160,7 @@ return {
 
 	s(
 	{ trig = "mm", snippetType = 'autosnippet' },
-	fmta('$<>$', { d(1, VISUAL) }),
-	{ condition = text_mode }
+	fmta('$<>$', { d(1, VISUAL) })
 	),
 
 	s(
@@ -632,8 +632,8 @@ return {
 			{
 				f( function(_, snip) return var_greek[snip.captures[1]] end )
 			}
-		),
-		{ condition = math_mode }
+		)
+		--{ condition = math_mode }
 	),
 
 	s(
@@ -646,8 +646,8 @@ return {
 		fmta(
 			'\\<>',
 			{ f( function(_, snip) return greek[snip.captures[1]] end ) }
-		),
-		{ condition = math_mode }
+		)
+		--{ condition = math_mode }
 	),
 
 	s(
