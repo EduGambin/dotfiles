@@ -1,6 +1,8 @@
 local wezterm = require 'wezterm'
 
-return {
+local M = {}
+
+M = {
 	-- Kanagawa theme.
 	force_reverse_video_cursor = true,
 	colors = {
@@ -30,8 +32,7 @@ return {
 		{ key = 'F11', action = wezterm.action.ToggleFullScreen }
 	},
 	font_size = 13.0,
-	font = wezterm.font('Hack NFM'),
-	default_prog = { 'powershell' },
+	font = wezterm.font('Hack Nerd Font'),
 	window_padding = {
 		left = 10,
 		right = 10,
@@ -39,3 +40,10 @@ return {
 		bottom = 10
 	}
 }
+
+if (wezterm.os == "windows") then
+	M.font = wezterm.font('Hack NFM')
+	M.default_prog = { 'powershell' }
+end
+
+return M
