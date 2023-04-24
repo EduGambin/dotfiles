@@ -29,9 +29,11 @@ M = {
 	hide_tab_bar_if_only_one_tab = true,
 	window_decorations = "RESIZE",
 	keys = {
-		{ key = 'F11', action = wezterm.action.ToggleFullScreen }
+		{ key = 'F11', action = wezterm.action.ToggleFullScreen },
+		{ key = '+', mods = 'CTRL', action = wezterm.action.IncreaseFontSize },
+		{ key = '-', mods = 'CTRL', action = wezterm.action.DecreaseFontSize },
 	},
-	font_size = 13.0,
+	font_size = 14.0,
 	font = wezterm.font('Hack Nerd Font'),
 	window_padding = {
 		left = 10,

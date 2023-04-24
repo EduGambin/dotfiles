@@ -12,8 +12,7 @@ end
 -------------------------------------------------------------------------------
 
 local math_mode = function()
-	--return vim.fn['vimtex#syntax#in_mathzone']() == 1
-	return false
+	return vim.fn['vimtex#syntax#in_mathzone']() == 1
 end
 
 local text_mode = function()
@@ -245,7 +244,7 @@ return {
 			snippetType = 'autosnippet'
 		},
 		fmta(
-			'<>',
+			'<> ',
 			{
 				f(
 					function(_, snip)
@@ -265,7 +264,7 @@ return {
 			snippetType = 'autosnippet'
 		},
 		fmta(
-			'<>',
+			'<> ',
 			{
 				f(
 					function(_, snip)
@@ -285,7 +284,7 @@ return {
 			snippetType = 'autosnippet'
 		},
 		fmta(
-			'<>',
+			'<> ',
 			{
 				f(
 					function(_, snip)
@@ -395,7 +394,7 @@ return {
 			wordTrig    = false,
 			snippetType = 'autosnippet'
 		},
-		t('\\times')
+		t(' \\times ')
 	),
 
 	s(
@@ -404,16 +403,17 @@ return {
 			wordTrig    = false,
 			snippetType = 'autosnippet'
 		},
-		t('\\oplus')
+		t(' \\oplus ')
 	),
 
 	s(
 		{
-			trig        = '€',
+			trig        = ' ?€',
+			regTrig     = true,
 			wordTrig    = false,
 			snippetType = 'autosnippet'
 		},
-		t('\\in'),
+		t(' \\in '),
 		{ condition = math_mode }
 	),
 
@@ -423,7 +423,7 @@ return {
 			wordTrig    = false,
 			snippetType = 'autosnippet'
 		},
-		t('\\to')
+		t(' \\to ')
 	),
 
 	s(
@@ -432,7 +432,7 @@ return {
 			wordTrig    = false,
 			snippetType = 'autosnippet'
 		},
-		t('\\implies')
+		t(' \\implies ')
 	),
 
 	s(
@@ -441,7 +441,7 @@ return {
 			wordTrig    = false,
 			snippetType = 'autosnippet'
 		},
-		t('\\setminus')
+		t(' \\setminus ')
 	),
 
 	s(
@@ -450,7 +450,7 @@ return {
 			wordTrig    = false,
 			snippetType = 'autosnippet'
 		},
-		t('\\mapsto')
+		t(' \\mapsto ')
 	),
 
 	s(
@@ -459,7 +459,7 @@ return {
 			wordTrig    = false,
 			snippetType = 'autosnippet'
 		},
-		t('\\ge ')
+		t(' \\ge ')
 	),
 
 	s(
@@ -468,7 +468,7 @@ return {
 			wordTrig    = false,
 			snippetType = 'autosnippet'
 		},
-		t('\\le ')
+		t(' \\le ')
 	),
 
 	s(
@@ -478,7 +478,7 @@ return {
 			priority    = 1002,
 			snippetType = 'autosnippet'
 		},
-		t('\\subseteq'),
+		t(' \\subseteq '),
 		{ condition = math_mode }
 	),
 
@@ -489,7 +489,7 @@ return {
 			priority = 1002,
 			snippetType = 'autosnippet'
 		},
-		t('\\iff')
+		t(' \\iff ')
 	),
 
 	s(
@@ -503,7 +503,7 @@ return {
 
 	s(
 		{
-			trig = '%s?%*%*',
+			trig = ' ?%*%*',
 			wordTrig = false,
 			regTrig = true,
 			snippetType = 'autosnippet'
@@ -530,7 +530,7 @@ return {
 			priority    = 1001,
 			snippetType = 'autosnippet'
 		},
-		fmta('\\mathbb <>', { m(1) }),
+		fmta('\\mathbb <> ', { m(1) }),
 		{ condition = math_mode }
 	),
 
@@ -587,7 +587,7 @@ return {
 			snippetType = 'autosnippet'
 		},
 		fmta(
-			'<>',
+			'<> ',
 			{
 				f(
 					function(_, snip)
@@ -607,7 +607,7 @@ return {
 			snippetType = 'autosnippet'
 		},
 		fmta(
-			'<>',
+			'<> ',
 			{
 				f(
 					function(_, snip)
@@ -628,7 +628,7 @@ return {
 			snippetType = 'autosnippet'
 		},
 		fmta(
-			'\\<>',
+			'\\<> ',
 			{
 				f( function(_, snip) return var_greek[snip.captures[1]] end )
 			}
@@ -644,7 +644,7 @@ return {
 			snippetType = 'autosnippet'
 		},
 		fmta(
-			'\\<>',
+			'\\<> ',
 			{ f( function(_, snip) return greek[snip.captures[1]] end ) }
 		)
 		--{ condition = math_mode }
@@ -653,7 +653,6 @@ return {
 	s(
 		{
 			trig = 'sum',
-			wordTrig = false,
 			snippetType = 'autosnippet'
 		},
 		fmta(
@@ -691,8 +690,8 @@ return {
 			wordTrig = false
 		},
 		fmta(
-			'\\int_{\\mathbb R^2} <>\\e^{-2\\pi ix\\cdot\\xi}\\ \\mathrm{d}x',
-			{ i(1) }
+			'\\int_{\\mathbb R^<>} <>\\e^{-2\\pi ix\\cdot\\xi}\\ \\mathrm{d}x',
+			{ i(1), i(2) }
 		)
 	),
 
@@ -710,5 +709,16 @@ return {
 			snippetType = 'autosnippet'
 		},
 		fmta('\\Bigl(<>\\Bigr)', { d(1, VISUAL) })
+	),
+
+	s(
+		{
+			trig = " +([%)%(\\%[%]%{%}_%^,%|])",
+			snippetType = 'autosnippet',
+			wordTrig = false,
+			regTrig = true
+		},
+		fmta("<>", { m(1) }),
+		{ condition = math_mode }
 	)
 }

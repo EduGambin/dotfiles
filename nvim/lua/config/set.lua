@@ -86,3 +86,13 @@ vim.cmd("colorscheme kanagawa-wave")
 
 vim.g.tex_flavor = 'latex'
 -- Detect .tex files as LaTeX files.
+
+vim.cmd([[au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif]])
+-- When opening a file, jump to the last cursor position.
+
+vim.cmd('set shm+=I')
+-- Add the I flag to the shortmess option. This will hide the intro message.
+
+vim.cmd('autocmd FileType * set formatoptions-=ro')
+-- Remove the ro flag from the formatoptions option. This will allow Vim to
+-- reformat text when pasting.

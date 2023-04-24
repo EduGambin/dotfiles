@@ -1,5 +1,4 @@
 local M = {}
-
 M = {
 	{
 		'rebelot/kanagawa.nvim',
@@ -9,7 +8,7 @@ M = {
 
 	{
 		'nvim-lualine/lualine.nvim',
-		event = "VeryLazy",
+		lazy = false,
 		dependencies = { 'nvim-tree/nvim-web-devicons', lazy = true },
 		config = true
 	},
@@ -17,16 +16,14 @@ M = {
 	{
 		'akinsho/bufferline.nvim',
 		version = "v3.*",
-		event = "VeryLazy",
+		lazy = false,
 		dependencies = { 'nvim-tree/nvim-web-devicons', lazy = true },
-		config = true
-	},
-
-	{
-		'KeitaNakamura/tex-conceal.vim',
 		config = function()
-			vim.g.tex_conceal = 'abdgm'
-			vim.g.tex_conceal_frac = 1
+			require('bufferline').setup({
+				options = {
+					diagnostics = "nvim_lsp"
+				}
+			})
 		end
 	}
 }

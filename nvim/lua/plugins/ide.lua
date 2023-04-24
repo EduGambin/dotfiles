@@ -5,6 +5,8 @@ M = {
 		'neovim/nvim-lspconfig',
 		config = function()
 			require'lspconfig'.texlab.setup{} -- You need to install texlab first!
+			require'lspconfig'.clangd.setup{} -- You need to install clangd first!
+			require'lspconfig'.glslls.setup{} -- You need to install glslls first!
 		end
 	},
 
@@ -42,12 +44,18 @@ M = {
 					{ name = 'nvim_lsp' },
 					{ name = 'luasnip' },
 				}, {
-					{ name = 'buffer' },
+					{ name = 'buffer', keyword_length = 7 },
 				})
 			})
 
 			local capabilities = require('cmp_nvim_lsp').default_capabilities()
 			require('lspconfig')['texlab'].setup {
+				capabilities = capabilities
+			}
+			require('lspconfig')['clangd'].setup {
+				capabilities = capabilities
+			}
+			require('lspconfig')['glslls'].setup {
 				capabilities = capabilities
 			}
 		end
@@ -57,7 +65,9 @@ M = {
 		"windwp/nvim-autopairs",
 		dependencies = { 'hrsh7th/nvim-cmp' },
     config = function()
-			require("nvim-autopairs").setup()
+			require("nvim-autopairs").setup({
+				disable_filetype = { "tex" },
+			})
 
 			local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 			local cmp = require('cmp')
@@ -66,7 +76,57 @@ M = {
 				cmp_autopairs.on_confirm_done()
 			)
 		end
-	}
+	},
+
+	{
+		"nvim-treesitter/nvim-treesitter",
+		build = function()
+			require("nvim-treesitter.install").update({ with_sync = true })
+		end,
+		config = function()
+			require("nvim-treesitter.configs").setup({
+				ensure_installed = "lua",
+				highlight = {
+					enable = true,
+					additional_vim_regex_highlighting = false,
+					disable = {
+						"latex"
+					}
+				},
+				indent = {
+					enable = true,
+				},
+				matchup = {
+					enable = true,
+				}				
+			})
+		end
+	},
+
+	{
+		'lervag/vimtex', -- You could not live with your own failure. Where did that bring you? Back to me.
+		config = function()
+			vim.cmd([[
+				let g:vimtex_format_enabled = 1
+				let g:tex_flavor = 'latex'
+				let g:vimtex_view_method = 'zathura'
+				let g:vimtex_compiler_latexmk = {
+					\ 'build_dir' : 'build',
+					\ 'options' : [
+					\   '-verbose',
+					\   '-file-line-error',
+					\   '-synctex=1',
+					\   '-interaction=nonstopmode',
+					\   '-pdf',
+					\   '-shell-escape',
+					\ ],
+				\}
+				let maplocalleader = " "
+			]])
+		end
+	},
+
+	{ 'github/copilot.vim' }
 }
 
 return M
