@@ -25,37 +25,54 @@ M = {
 		"L3MON4D3/LuaSnip",
 		config = function()
 			require('luasnip').setup({
-				delete_check_events = 'TextChanged',
 				store_selection_keys = '<Tab>',
 				enable_autosnippets = true,
 				history = true,
+				region_check_events = 'InsertEnter',
+				delete_check_events = 'TextChanged,InsertLeave',
 			})
 			require("luasnip.loaders.from_lua").lazy_load({ paths = "./snippets" })
 		end
 	},
 
+	{ 'Vonr/align.nvim' },
+
 	{
-		"nvim-neorg/neorg",
-		build = ":Neorg sync-parsers",
-		opts = {
-			load = {
-				["core.defaults"] = {},   -- Loads default behaviour
-				["core.concealer"] = {},  -- Adds pretty icons to your documents
-				["core.completion"] = {
-					config = {
-						engine = "nvim-cmp",
-					},
-				}, -- Completion
-				["core.dirman"] = {       -- Manages Neorg workspaces
-					config = {
-						workspaces = {
-							notes = "~/notes",
-						},
-					},
-				},
-			},
+		'terrortylor/nvim-comment',
+		config = function()
+			require('nvim_comment').setup()
+		end
+	},
+
+	{
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    config = function()
+			require("nvim-surround").setup({
+
+			})
+    end
+	},
+
+	{
+		'cameron-wags/rainbow_csv.nvim',
+		config = true,
+		ft = {
+			'csv',
+			'tsv',
+			'csv_semicolon',
+			'csv_whitespace',
+			'csv_pipe',
+			'rfc_csv',
+			'rfc_semicolon'
 		},
-		dependencies = { { "nvim-lua/plenary.nvim" } },
+		cmd = {
+			'RainbowDelim',
+			'RainbowDelimSimple',
+			'RainbowDelimQuoted',
+			'RainbowMultiDelim'
+		}
 	}
 }
 

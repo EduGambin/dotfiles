@@ -2,6 +2,9 @@
 -- here, the default value was sufficient. These options have been checked
 -- through the documentation.
 
+vim.opt.breakindent = true
+-- When on Vim will try to preserve the indent of a line when word wrapping.
+
 vim.opt.clipboard = "unnamedplus"
 -- Use the system's default clipboard register.
 
@@ -51,7 +54,7 @@ vim.opt.spelllang = "es,en"
 vim.opt.splitbelow = true
 -- When on, splitting a window will put the new window below the current one.
 
-vim.opt.splitbelow = true
+vim.opt.splitright = true
 -- When on, splitting a window will put the new window right of the current one.
 
 vim.opt.swapfile = false
@@ -81,11 +84,15 @@ vim.opt.wrap = false
 vim.cmd('language es_ES.UTF-8')
 -- Change the language to Spanish using UTF-8 as encoding.
 
-vim.cmd("colorscheme kanagawa-wave")
+--vim.cmd("colorscheme kanagawa-wave")
 -- Set the colorscheme.
 
 vim.g.tex_flavor = 'latex'
 -- Detect .tex files as LaTeX files.
+
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+-- Disable netrw.
 
 vim.cmd([[au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif]])
 -- When opening a file, jump to the last cursor position.
@@ -96,3 +103,14 @@ vim.cmd('set shm+=I')
 vim.cmd('autocmd FileType * set formatoptions-=ro')
 -- Remove the ro flag from the formatoptions option. This will allow Vim to
 -- reformat text when pasting.
+
+vim.opt.cursorline = true
+-- Now I can see where I am writing.
+
+vim.opt.wrap = true
+-- Lines will wrap around.
+
+vim.opt.linebreak = true
+-- Break that line man.
+
+vim.opt.winblend = 10

@@ -152,6 +152,11 @@ return {
 	),
 
 	s(
+		{ trig = 'all', snippetType = 'autosnippet' },
+		fmta("\\alert{<>}", { d(1, VISUAL) })
+	),
+
+	s(
 		{ trig = '||', snippetType = 'autosnippet' },
 		fmta('\\lvert <>\\rvert', { d(1, VISUAL) }),
 		{ condition = math_mode }
@@ -419,7 +424,8 @@ return {
 
 	s(
 		{
-			trig        = '->',
+			trig        = ' ?->',
+			regTrig     = true,
 			wordTrig    = false,
 			snippetType = 'autosnippet'
 		},
@@ -455,7 +461,8 @@ return {
 
 	s(
 		{
-			trig        = '>=',
+			trig        = ' ?>=',
+			regTrig     = true,
 			wordTrig    = false,
 			snippetType = 'autosnippet'
 		},
@@ -464,7 +471,8 @@ return {
 
 	s(
 		{
-			trig        = '<=',
+			trig        = ' ?<=',
+			regTrig     = true,
 			wordTrig    = false,
 			snippetType = 'autosnippet'
 		},
@@ -473,23 +481,14 @@ return {
 
 	s(
 		{
-			trig        = 'cc',
+			trig        = ' ?cc',
+			regTrig     = true,
 			wordTrig    = false,
 			priority    = 1002,
 			snippetType = 'autosnippet'
 		},
 		t(' \\subseteq '),
 		{ condition = math_mode }
-	),
-
-	s(
-		{
-			trig = 'iff',
-			wordTrig = false,
-			priority = 1002,
-			snippetType = 'autosnippet'
-		},
-		t(' \\iff ')
 	),
 
 	s(
@@ -536,7 +535,7 @@ return {
 
 	s(
 		{
-			trig        = '(%a)(%l)%2',
+		trig        = '(%a)([ijkrnm])%2',
 			wordTrig    = false,
 			regTrig     = true,
 			snippetType = 'autosnippet'
@@ -680,7 +679,8 @@ return {
 		},
 		fmta(
 			'\\int_{\\mathbb R^<>} <>\\ \\mathrm{d}',
-			{ i(1, 'd'), i(2) }
+			{ i(1, 'd'), i(2) },
+			{ condition = math_mode }
 		)
 	),
 
@@ -713,7 +713,7 @@ return {
 
 	s(
 		{
-			trig = " +([%)%(\\%[%]%{%}_%^,%|])",
+			trig = " +([%)%(\\%[%]%{%}_%^,%|@])",
 			snippetType = 'autosnippet',
 			wordTrig = false,
 			regTrig = true

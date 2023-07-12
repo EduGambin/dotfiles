@@ -6,7 +6,7 @@ M = {
 		config = function()
 			require'lspconfig'.texlab.setup{} -- You need to install texlab first!
 			require'lspconfig'.clangd.setup{} -- You need to install clangd first!
-			require'lspconfig'.glslls.setup{} -- You need to install glslls first!
+			require'lspconfig'.pylsp.setup{} -- You need to install pyright first!
 		end
 	},
 
@@ -55,9 +55,14 @@ M = {
 			require('lspconfig')['clangd'].setup {
 				capabilities = capabilities
 			}
-			require('lspconfig')['glslls'].setup {
+			require('lspconfig')['pylsp'].setup {
 				capabilities = capabilities
 			}
+			require('rust-tools').setup({
+				server = {
+					capabilities = capabilities
+				}
+			})
 		end
 	},
 
@@ -111,7 +116,6 @@ M = {
 				let g:tex_flavor = 'latex'
 				let g:vimtex_view_method = 'zathura'
 				let g:vimtex_compiler_latexmk = {
-					\ 'build_dir' : 'build',
 					\ 'options' : [
 					\   '-verbose',
 					\   '-file-line-error',
@@ -126,7 +130,15 @@ M = {
 		end
 	},
 
-	{ 'github/copilot.vim' }
+	{ 'github/copilot.vim' },
+
+	{
+		"nvim-tree/nvim-tree.lua",
+		dependencies = { 'nvim-tree/nvim-web-devicons' },
+		config = function()
+			require("nvim-tree").setup()
+		end
+	}
 }
 
 return M

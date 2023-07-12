@@ -1,4 +1,5 @@
 local wezterm = require 'wezterm'
+local act = wezterm.action
 
 local M = {}
 
@@ -27,11 +28,52 @@ M = {
 	tab_bar_at_bottom = true,
 	use_fancy_tab_bar = false,
 	hide_tab_bar_if_only_one_tab = true,
-	window_decorations = "RESIZE",
+	--window_decorations = "RESIZE", -- No need if using an extension!!
 	keys = {
-		{ key = 'F11', action = wezterm.action.ToggleFullScreen },
-		{ key = '+', mods = 'CTRL', action = wezterm.action.IncreaseFontSize },
-		{ key = '-', mods = 'CTRL', action = wezterm.action.DecreaseFontSize },
+		{
+			key = 'F11',
+			action = act.ToggleFullScreen 
+		},
+		{
+			key = '+',
+			mods = 'CTRL',
+			action = act.IncreaseFontSize 
+		},
+		{
+			key = '-',
+			mods = 'CTRL',
+			action = act.DecreaseFontSize 
+		},
+		{
+			key = 'h',
+			mods = 'CTRL|SHIFT|ALT',
+			action = act.SplitHorizontal
+		},
+		{
+			key = 'v',
+			mods = 'CTRL|SHIFT|ALT',
+			action = act.SplitVertical 
+		},
+		{
+			key = 'h',
+			mods = 'CTRL|SHIFT',
+			action = act.ActivatePaneDirection 'Left',
+		},
+		{
+			key = 'l',
+			mods = 'CTRL|SHIFT',
+			action = act.ActivatePaneDirection 'Right',
+		},
+		{
+			key = 'k',
+			mods = 'CTRL|SHIFT',
+			action = act.ActivatePaneDirection 'Up',
+		},
+		{
+			key = 'j',
+			mods = 'CTRL|SHIFT',
+			action = act.ActivatePaneDirection 'Down',
+		},
 	},
 	font_size = 14.0,
 	font = wezterm.font('Hack Nerd Font'),
