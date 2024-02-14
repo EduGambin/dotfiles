@@ -19,7 +19,7 @@ vim.opt.cursorline     = true
 vim.opt.showmode       = false
 vim.opt.incsearch      = true
 
-vim.g.mapleader = " " -- Lazy requires this to be here.
+vim.g.mapleader        = " " -- Lazy requires this to be here.
 
 vim.cmd("let g:loaded_perl_provider = 0")
 vim.cmd("let g:loaded_python3_provider = 0")

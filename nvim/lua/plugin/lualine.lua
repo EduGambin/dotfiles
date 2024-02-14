@@ -8,7 +8,8 @@ return {
 			globalstatus = true
 		},
 		extensions = {
-			"neo-tree"
+			"neo-tree",
+			"lazy"
 		}
 	}
 }

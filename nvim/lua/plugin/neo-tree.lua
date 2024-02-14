@@ -9,25 +9,25 @@ return {
 	},
 	keys = {
 		{
-			"<leader>fe",
+			"<leader>ef",
 			function()
 				require("neo-tree.command").execute({ toggle = true })
 			end,
-			desc = "File explorer",
+			desc = "files",
 		},
 		{
-			"<leader>ge",
+			"<leader>eg",
 			function()
 				require("neo-tree.command").execute({ source = "git_status", toggle = true })
 			end,
-			desc = "Git explorer",
+			desc = "Git"
 		},
 		{
-			"<leader>be",
+			"<leader>eb",
 			function()
 				require("neo-tree.command").execute({ source = "buffers", toggle = true })
 			end,
-			desc = "Buffer explorer",
+			desc = "buffers"
 		},
 	},
 	config = function()
