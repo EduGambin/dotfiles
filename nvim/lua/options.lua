@@ -17,6 +17,8 @@ vim.opt.undofile       = true
 vim.opt.cursorline     = true
 vim.opt.showmode       = false
 vim.opt.incsearch      = true
+vim.opt.linebreak      = true
+vim.opt.conceallevel   = 2
 
 vim.g.mapleader        = " " -- Lazy requires this to be here.
 

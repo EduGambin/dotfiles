@@ -5,15 +5,14 @@ return {
 	opts = {
 		options = {
 			close_command = function(n) require("mini.bufremove").delete(n, false) end,
-			diagnostics = "nvim_lsp",
 			always_show_bufferline = false,
 			offsets = {
 				{
-					filetype = "neo-tree",
-					text = "File Explorer",
-					highlight = "Directory",
-					separator = true,
-					text_align = "left"
+					filetype   = "neo-tree",
+					text       = "~ File Explorer ~",
+					highlight  = "Directory",
+					separator  = true,
+					text_align = "center"
 				}
 			}
 		}

@@ -21,19 +21,10 @@ return {
 			}
 		})
 
-		-- Advanced functions for keymaps.
-		local showBufferInfoWithFallback = function()
-			if vim.tbl_isempty(vim.diagnostic.count()) then
-				vim.print("LSP: nothing to show for the current buffer")
-			else
-				vim.diagnostic.setloclist()
-			end
-		end
-
 		-- Global mappings.
 		vim.keymap.set('n', '<leader>cd', vim.diagnostic.open_float, { desc = 'Diagnostic' })
 
-		vim.keymap.set('n', '<leader>bi', showBufferInfoWithFallback, { desc = 'Information' })
+		vim.keymap.set('n', '<leader>bd', vim.diagnostic.setloclist, { desc = 'Disgnostics' })
 		vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Previous diagnostic' })
 		vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Next diagnostic' })
 
