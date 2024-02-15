@@ -5,11 +5,9 @@ return {
 	priority = 1000,
 	opts = {
 		options = {
-			globalstatus = true
+			globalstatus = true,
+			disabled_filetypes = { "alpha", "TelescopePrompt" }
 		},
-		extensions = {
-			"neo-tree",
-			"lazy"
-		}
+		extensions = { "neo-tree", "lazy" },
 	}
 }

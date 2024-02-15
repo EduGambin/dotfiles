@@ -14,9 +14,19 @@ return {
 				t = { name = "Telescope" },
 				e = { name = "Explorer" },
 				c = { name = "Code" },
-				b = { name = "Buffer" },
+				b = {
+					name = "Buffer",
+					n = { "<cmd>ene<cr>", "New" }
+				},
+				w = {
+					name = "Window",
+					v = { "<cmd>vs<cr>", "Vertical new" },
+					h = { "<cmd>sp<cr>", "Horizontal new" },
+					c = { "<cmd>clo<cr>", "Close" },
+					m = { "<cmd>on<cr>", "Maximize" }
+				}
 			},
-			g = { name = "Goto" }
+			g = { name = "Goto" },
 		})
 	end
 }

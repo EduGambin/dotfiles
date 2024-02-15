@@ -12,7 +12,8 @@ return {
 				"vimdoc",
 				"query",
 				"cpp",
-				"markdown_inline"
+				"markdown_inline",
+				"regex"
 			},
 			sync_install = false,
 			highlight = { enable = true },

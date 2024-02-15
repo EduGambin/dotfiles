@@ -1,15 +1,19 @@
 return {
 	'akinsho/bufferline.nvim',
 	version = "*",
-	dependencies = 'nvim-tree/nvim-web-devicons',
+	dependencies = { 'nvim-tree/nvim-web-devicons', 'echasnovski/mini.nvim' },
 	opts = {
 		options = {
+			close_command = function(n) require("mini.bufremove").delete(n, false) end,
+			diagnostics = "nvim_lsp",
+			always_show_bufferline = false,
 			offsets = {
 				{
-					filetype = "NvimTree",
+					filetype = "neo-tree",
 					text = "File Explorer",
 					highlight = "Directory",
-					separator = true -- use a "true" to enable the default, or set your own character
+					separator = true,
+					text_align = "left"
 				}
 			}
 		}

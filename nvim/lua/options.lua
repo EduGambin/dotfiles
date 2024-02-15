@@ -2,7 +2,6 @@
 vim.opt.clipboard      = "unnamedplus"
 vim.opt.conceallevel   = 2
 vim.opt.ignorecase     = true
-vim.opt.lazyredraw     = true
 vim.opt.number         = true
 vim.opt.relativenumber = true
 vim.opt.scrolloff      = 3

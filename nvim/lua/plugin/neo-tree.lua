@@ -30,10 +30,28 @@ return {
 			desc = "buffers"
 		},
 	},
-	config = function()
-		require("neo-tree").setup({
-			close_if_last_window = true,
-			hide_root_node = true
-		})
-	end,
+	opts = {
+		close_if_last_window = true,
+		hide_root_node = true,
+		event_handlers = {
+			{ -- When opening a file from the explorer, close it after.
+				event = "file_opened",
+				handler = function(file_path)
+					require("neo-tree.command").execute({ action = "close" })
+				end
+			},
+			{ -- Hide cursor in tree window.
+      event = "neo_tree_buffer_enter",
+      handler = function()
+        vim.cmd("highlight! Cursor blend=100")
+      end,
+    },
+    { -- Show cursor out of tree window.
+      event = "neo_tree_buffer_leave",
+      handler = function()
+        vim.cmd("highlight! Cursor blend=0")
+      end,
+    }
+		}
+	}
 }

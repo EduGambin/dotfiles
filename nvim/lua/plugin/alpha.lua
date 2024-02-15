@@ -1,5 +1,7 @@
 return {
 	'goolord/alpha-nvim',
+	lazy = false,
+	priority = 1000,
 	dependencies = 'nvim-tree/nvim-web-devicons',
 	config = function()
 		local alpha = require("alpha")
@@ -7,24 +9,44 @@ return {
 
 		-- Set header
 		dashboard.section.header.val = {
-			"                                                     ",
-			"  ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ",
-			"  ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ",
-			"  ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║ ",
-			"  ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ ",
-			"  ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ",
-			"  ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ",
-			"                                                     ",
+			[[                                                                     ]],
+			[[                                                                     ]],
+			[[                                                                     ]],
+			[[                                                                     ]],
+			[[                                                                     ]],
+			[[                                                                     ]],
+			[[                                                                   ]],
+			[[      ████ ██████           █████      ██                    ]],
+			[[     ███████████             █████                            ]],
+			[[     █████████ ███████████████████ ███   ███████████  ]],
+			[[    █████████  ███    █████████████ █████ ██████████████  ]],
+			[[   █████████ ██████████ █████████ █████ █████ ████ █████  ]],
+			[[ ███████████ ███    ███ █████████ █████ █████ ████ █████ ]],
+			[[██████  █████████████████████ ████ █████ █████ ████ ██████]],
+			[[                                                                     ]],
+			[[─────────────────────────────────────────────────────────────────────]],
+			[[                                                                     ]],
+			[[   Absolutely worth the 14-hour epic saga to configure this editor   ]],
+			[[                                                                     ]],
+			[[                                                                     ]],
 		}
 
 		-- Set menu
 		dashboard.section.buttons.val = {
-			dashboard.button("e", "  > New file", ":ene <BAR> startinsert <CR>"),
-			dashboard.button("f", "  > Find file", ":cd $HOME/Workspace | Telescope find_files<CR>"),
-			dashboard.button("r", "  > Recent", ":Telescope oldfiles<CR>"),
-			dashboard.button("s", "  > Settings", ":e $MYVIMRC | :cd %:p:h | split . | wincmd k | pwd<CR>"),
-			dashboard.button("q", "  > Quit NVIM", ":qa<CR>"),
+			dashboard.button("n", "󰈔  > New file",     "<cmd> ene <BAR> startinsert <cr>"),
+			dashboard.button("f", "  > Find file",    "<cmd> Telescope find_files  <cr>"),
+			dashboard.button("g", "  > Find text",    "<cmd> Telescope live_grep   <cr>"),
+			dashboard.button("r", "  > Find recent ", "<cmd> Telescope oldfiles    <cr>"),
+			dashboard.button("l", "󰒲  > Open plugins", "<cmd> Lazy                  <cr>"),
+			dashboard.button("q", "  > Quit NeoVim",  "<cmd> qa                    <cr>"),
 		}
+
+		-- Configure highlighting
+		for _, button in ipairs(dashboard.section.buttons.val) do
+			button.opts.hl = { { "Define", 0, 2 }, { "Constant", 3, 7 } }
+			button.opts.hl_shortcut = "Special"
+		end
+		dashboard.section.header.opts.hl = "Identifier"
 
 		-- Send config to alpha
 		alpha.setup(dashboard.opts)
