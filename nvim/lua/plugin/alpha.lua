@@ -25,7 +25,7 @@ return {
 			[[                                                                     ]],
 			[[─────────────────────────────────────────────────────────────────────]],
 			[[                                                                     ]],
-			[[   Absolutely worth the 14-hour epic saga to configure this editor   ]],
+			[[   Absolutely worth the 42-hour epic saga to configure this editor   ]],
 			[[                                                                     ]],
 			[[                                                                     ]],
 		}

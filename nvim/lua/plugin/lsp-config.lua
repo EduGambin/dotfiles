@@ -35,7 +35,6 @@ return {
 			callback = function(ev)
 				local formatCode = function()
 					vim.lsp.buf.format({ async = true })
-					vim.print("LSP: buffer formatted")
 				end
 
 				vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { buffer = ev.buf, desc = 'Declaration' })

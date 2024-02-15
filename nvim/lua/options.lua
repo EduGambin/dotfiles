@@ -19,6 +19,7 @@ vim.opt.showmode       = false
 vim.opt.incsearch      = true
 vim.opt.linebreak      = true
 vim.opt.conceallevel   = 2
+vim.opt.wrap           = false
 
 vim.g.mapleader        = " " -- Lazy requires this to be here.
 
