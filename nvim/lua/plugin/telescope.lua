@@ -8,19 +8,22 @@ return {
 			"nvim-telescope/telescope-fzf-native.nvim",
 			build = "make",
 			cond = function()
-				return vim.fn.executable "make" == 1
+				return vim.fn.executable("make") == 1
 			end,
 		},
 		{ "nvim-telescope/telescope-ui-select.nvim" },
-		{ "nvim-tree/nvim-web-devicons" }
+		{ "nvim-tree/nvim-web-devicons" },
 	},
 	config = function()
 		require("telescope").setup({
+			defaults = {
+				path_display = { "tail" },
+			},
 			extensions = {
 				["ui-select"] = {
 					require("telescope.themes").get_dropdown(),
 				},
-			}
+			},
 		})
 
 		-- Enable telescope extensions, if they are installed
@@ -40,25 +43,25 @@ return {
 		vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
 
 		-- Slightly advanced example of overriding default behavior and theme
-		vim.keymap.set('n', '<leader>/', function()
+		vim.keymap.set("n", "<leader>/", function()
 			-- You can pass additional configuration to telescope to change theme, layout, etc.
-			builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+			builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
 				winblend = 10,
 				previewer = false,
-			})
-		end, { desc = '[/] Fuzzily search in current buffer' })
+			}))
+		end, { desc = "[/] Fuzzily search in current buffer" })
 
 		-- Also possible to pass additional configuration options.
-		vim.keymap.set('n', '<leader>s/', function()
-			builtin.live_grep {
+		vim.keymap.set("n", "<leader>s/", function()
+			builtin.live_grep({
 				grep_open_files = true,
-				prompt_title = 'Live Grep in Open Files',
-			}
-		end, { desc = '[S]earch [/] in Open Files' })
+				prompt_title = "Live Grep in Open Files",
+			})
+		end, { desc = "[S]earch [/] in Open Files" })
 
 		-- Shortcut for searching your neovim configuration files
-		vim.keymap.set('n', '<leader>sn', function()
-			builtin.find_files { cwd = vim.fn.stdpath 'config' }
-		end, { desc = '[S]earch [N]eovim files' })
-	end
+		vim.keymap.set("n", "<leader>sn", function()
+			builtin.find_files({ cwd = vim.fn.stdpath("config") })
+		end, { desc = "[S]earch [N]eovim files" })
+	end,
 }
