@@ -46,10 +46,10 @@ return {
 				vim.keymap.set('n', '<C-K>', vim.lsp.buf.signature_help, { buffer = ev.buf, desc = 'Signature Help' })
 
 				vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { buffer = ev.buf, desc = 'Action' })
-				vim.keymap.set('n', '<leader>cf', formatCode, { buffer = ev.buf, desc = 'Format' })
+				-- vim.keymap.set('n', '<leader>cf', formatCode, { buffer = ev.buf, desc = 'Format' })
 				vim.keymap.set('n', '<leader>cr', vim.lsp.buf.rename, { buffer = ev.buf, desc = 'Rename' })
 
-				vim.keymap.set('n', '<leader>bf', formatCode, { buffer = ev.buf, desc = 'Format' })
+				-- vim.keymap.set('n', '<leader>bf', formatCode, { buffer = ev.buf, desc = 'Format' })
 			end,
 		})
 	end

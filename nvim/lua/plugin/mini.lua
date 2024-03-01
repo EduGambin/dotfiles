@@ -1,22 +1,11 @@
 return {
 	'echasnovski/mini.nvim',
 	version = '*',
-	keys = {
-		{ "<leader>bc", require("mini.bufremove").delete, desc = "Close" },
-	},
 	config = function()
-		require("mini.ai").setup()
-		require("mini.align").setup()
-		require("mini.bufremove").setup()
-		require("mini.comment").setup()
-		require("mini.cursorword").setup()
-		-- require("mini.indentscope").setup({
-		-- 	symbol = "│"
-		-- })
-		require("mini.move").setup()
-		require("mini.pairs").setup()
-		require("mini.splitjoin").setup()
-		require("mini.surround").setup()
-		require("mini.trailspace").setup()
+		require("mini.ai").setup()       -- Better version of around and inside.
+		require("mini.align").setup()    -- Align text.
+		require("mini.bufremove").setup() -- Better version of built-in bd.
+		require("mini.cursorword").setup() -- Highlight word under cursor.
+		require("mini.move").setup()     -- Move lines and blocks of text.
 	end
 }
