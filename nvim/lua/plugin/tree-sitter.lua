@@ -1,11 +1,10 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
 	build = ":TSUpdate",
-	config = function ()
-		local configs = require("nvim-treesitter.configs")
-
-		configs.setup({
+	config = function()
+		require("nvim-treesitter.configs").setup({
 			ensure_installed = {
+				"bash",
 				"c",
 				"lua",
 				"vim",
@@ -13,11 +12,14 @@ return {
 				"query",
 				"cpp",
 				"markdown_inline",
+				"markdown",
 				"regex"
 			},
-			sync_install = false,
+			auto_install = true,
 			highlight = { enable = true },
 			indent = { enable = true },
 		})
 	end
 }
+
+-- vim: ts=2 sts=2 sw=2 et

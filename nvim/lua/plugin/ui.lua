@@ -1,12 +1,22 @@
 return {
+	"tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically.
+
 	{
 		"rebelot/kanagawa.nvim",
 		lazy = false,
 		priority = 1000,
 		config = function()
-			vim.cmd("colorscheme kanagawa")
+			vim.cmd.colorscheme "kanagawa"
 		end
 	},
+
+
+	{ -- Highlight todo, notes, etc in comments.
+		'folke/todo-comments.nvim',
+		dependencies = { 'nvim-lua/plenary.nvim' },
+		opts = { signs = false }
+	},
+
 	{
 		'nvim-lualine/lualine.nvim',
 		dependencies = {
@@ -14,13 +24,18 @@ return {
 		},
 		lazy = false,
 		priority = 1000,
-		opts = {
-			options = {
-				globalstatus = true,         -- Show the same statusline on all windows.
-				disabled_filetypes = { "alpha" } -- Don't show statusline on start screen.
-			},
-			extensions = { "lazy", "neo-tree", "mason" }
-		}
+		config = function()
+			-- Hide default mode indicator.
+			vim.opt.showmode = false
+
+			require("lualine").setup {
+				options = {
+					globalstatus = true, -- Show the same statusline on all windows.
+					disabled_filetypes = { "alpha" } -- Don't show statusline on start screen.
+				},
+				extensions = { "lazy", "neo-tree", "mason" }
+			}
+		end
 	},
 	{
 		'akinsho/bufferline.nvim',
@@ -45,7 +60,7 @@ return {
 					offsets = {
 						{
 							filetype   = "neo-tree",
-							text       = "═════ File Explorer ═════",
+							text       = "════════ File Explorer ════════",
 							text_align = "center",
 							separator  = true,
 						}
@@ -59,6 +74,7 @@ return {
 
 	{
 		"lukas-reineke/indent-blankline.nvim",
+		enabled = false,
 		main = "ibl",
 		opts = {
 			debounce = 100,

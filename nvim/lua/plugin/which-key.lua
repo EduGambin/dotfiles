@@ -2,9 +2,6 @@ return {
 	"folke/which-key.nvim",
 	event = "VeryLazy",
 	config = function()
-		vim.o.timeout = true
-		vim.o.timeoutlen = 300
-
 		local wk = require("which-key")
 
 		wk.setup {
@@ -16,24 +13,11 @@ return {
 		}
 
 		wk.register({
-			["<leader>"] = {
-				name = "Plugin",
-				t = { name = "Telescope" },
-				e = { name = "Explorer" },
-				c = { name = "Code" },
-				b = {
-					name = "Buffer",
-					n = { "<cmd>ene<cr>", "New" }
-				},
-				w = {
-					name = "Window",
-					v = { "<cmd>vs<cr>", "Vertical new" },
-					h = { "<cmd>sp<cr>", "Horizontal new" },
-					c = { "<cmd>clo<cr>", "Close" },
-					m = { "<cmd>on<cr>", "Maximize" }
-				}
-			},
-			g = { name = "Goto" },
+			['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
+			['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
+			['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
+			['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
+			['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
 		})
 	end
 }

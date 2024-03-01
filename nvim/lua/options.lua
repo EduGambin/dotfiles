@@ -1,29 +1,47 @@
-vim.opt.clipboard      = "unnamedplus"
-vim.opt.conceallevel   = 2
-vim.opt.ignorecase     = true
+-- Set <space> as the leader key. This must be done before plugins are loaded, otherwise the wrong leader will be used.
+vim.g.mapleader        = " "
+vim.g.maplocalleader   = " "
+
+-- Set line numbers and relative line numbers.
 vim.opt.number         = true
 vim.opt.relativenumber = true
-vim.opt.scrolloff      = 3
-vim.opt.shiftwidth     = 0
+--
+-- Enable mouse mode in all contexts.
+vim.opt.mouse          = 'a'
+
+-- Sync clipboard between OS and Neovim.
+vim.opt.clipboard      = "unnamedplus"
+
+-- Enable break indent (wrap lines at the same indent level as the line above or below it).
+vim.opt.breakindent    = true
+
+-- Enable persistent undo.
+vim.opt.undofile       = true
+
+-- Case insensitive searching UNLESS \C or capital in search.
+vim.opt.ignorecase     = true
 vim.opt.smartcase      = true
-vim.opt.smartindent    = true
+
+-- Keep signcolumn on by default (it looks weird when toggling it).
+vim.opt.signcolumn     = 'yes'
+
+-- Decrease update time.
+vim.opt.updatetime     = 250
+vim.opt.timeoutlen     = 300
+
+-- Configure the split behavior.
 vim.opt.splitbelow     = true
 vim.opt.splitright     = true
-vim.opt.swapfile       = false
-vim.opt.tabstop        = 2
-vim.opt.termguicolors  = true
-vim.opt.undofile       = true
+
+-- Sets how neovim will display certain whitespace in the editor.
+vim.opt.list           = true
+vim.opt.listchars      = { tab = "» ", trail = "·", nbsp = "␣" }
+--
+-- Preview substitutions live, as you type!
+vim.opt.inccommand     = 'split'
+
+-- Show which line your cursor is on.
 vim.opt.cursorline     = true
-vim.opt.showmode       = false
-vim.opt.incsearch      = true
-vim.opt.linebreak      = true
-vim.opt.conceallevel   = 2
-vim.opt.wrap           = false
 
-vim.g.mapleader        = " " -- Lazy requires this to be here.
-
-vim.cmd("let g:loaded_perl_provider = 0")
-vim.cmd("let g:loaded_python3_provider = 0")
-
--- When opening a file, jump to the last cursor position.
-vim.cmd([[au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif]])
+-- Minimal number of screen lines to keep above and below the cursor.
+vim.opt.scrolloff      = 10
