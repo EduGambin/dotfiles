@@ -6,6 +6,7 @@ return {
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		{ "j-hui/fidget.nvim", opts = {} },
 	},
+	event = { "BufReadPost", "BufNewFile", "BufWritePre" },
 	config = function()
 		--  This function gets run when an LSP attaches to a particular buffer.
 		vim.api.nvim_create_autocmd("LspAttach", {

@@ -1,5 +1,6 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
+	event = "VeryLazy",
 	build = ":TSUpdate",
 	config = function()
 		require("nvim-treesitter.configs").setup({
@@ -13,13 +14,13 @@ return {
 				"cpp",
 				"markdown_inline",
 				"markdown",
-				"regex"
+				"regex",
 			},
 			auto_install = true,
 			highlight = { enable = true },
 			indent = { enable = true },
 		})
-	end
+	end,
 }
 
 -- vim: ts=2 sts=2 sw=2 et

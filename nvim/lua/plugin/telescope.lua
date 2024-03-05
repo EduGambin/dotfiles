@@ -1,6 +1,7 @@
 return {
 	"nvim-telescope/telescope.nvim",
 	event = "VeryLazy",
+	enabled = false,
 	branch = "0.1.x",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
@@ -14,10 +15,12 @@ return {
 		{ "nvim-telescope/telescope-ui-select.nvim" },
 		{ "nvim-tree/nvim-web-devicons" },
 	},
+	keys = {},
 	config = function()
 		require("telescope").setup({
 			defaults = {
 				path_display = { "tail" },
+				layout_config = { width = 0.95, height = 0.95 },
 			},
 			extensions = {
 				["ui-select"] = {

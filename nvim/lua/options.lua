@@ -48,3 +48,6 @@ vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
+
+-- Hide default mode indicator.
+vim.opt.showmode = false

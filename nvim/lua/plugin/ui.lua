@@ -21,18 +21,14 @@ return {
 		dependencies = {
 			{ "nvim-tree/nvim-web-devicons", lazy = true }, -- For icons.
 		},
-		lazy = false,
-		priority = 1000,
+		event = "VeryLazy",
 		config = function()
-			-- Hide default mode indicator.
-			vim.opt.showmode = false
-
 			require("lualine").setup({
 				options = {
 					globalstatus = true, -- Show the same statusline on all windows.
 					disabled_filetypes = { "alpha" }, -- Don't show statusline on start screen.
 				},
-				extensions = { "lazy", "neo-tree", "mason" },
+				extensions = { "lazy", "neo-tree" },
 			})
 		end,
 	},
@@ -41,8 +37,8 @@ return {
 		version = "*",
 		dependencies = {
 			{ "nvim-tree/nvim-web-devicons", lazy = true }, -- For icons.
-			{ "echasnovski/mini.nvim", lazy = true }, -- For close command.
 		},
+		event = "VeryLazy",
 		config = function()
 			local closeFunction = function(n)
 				require("mini.bufremove").delete(
